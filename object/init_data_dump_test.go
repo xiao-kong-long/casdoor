@@ -21,6 +21,7 @@ import "testing"
 
 func TestDumpToFile(t *testing.T) {
 	InitConfig()
+	InitUserManager()
 
 	err := DumpToFile("./init_data_dump.json")
 	if err != nil {

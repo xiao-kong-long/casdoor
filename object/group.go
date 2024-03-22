@@ -64,6 +64,15 @@ func GetGroups(owner string) ([]*Group, error) {
 		return nil, err
 	}
 
+	n := len(groups)
+	for i := 0; i < n; i++ {
+		users, err := GetGroupUsers(util.GetId(owner, groups[i].Name))
+		if err != nil {
+			return nil, err
+		}
+		groups[i].Users = users
+	}
+
 	return groups, nil
 }
 
